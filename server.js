@@ -10,4 +10,6 @@ app.get('/', function(req, res) {
     });
 });
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 8080, function() {
+    console.log("Running on port %d", process.env.PORT || 8080);
+});

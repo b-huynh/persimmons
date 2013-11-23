@@ -3,20 +3,49 @@
 <body>
 
 <script>
-var invisibility = 1;
-var magic = 2;
-var player_1 = new Object();
-var player_2 = new Object();
-/*var player_3 = new Object();
-var player_4 = new Object();*/
+function player_1(character_number, persimmon_count)
+{
+  this.crab = false;
+  this.monkey = false;
+  this.persimmon_count = persimmon_count;
+  if(character_number == 1)
+  {
+   this.monkey = true;
+  }
+  else 
+  {
+    this.crab = true;
+  }
+  this.change_persimmon_count = change_persimmon_count();
+  function change_persimmon_count(persimmons)
+  {
+    this.persimmon_count = persimmons;
+  }
+}
 
-player_1.persimmon_count = 10;
-player_1.monkey = false;
-player_1.crab = false;
-/*player_1.chesnut = false;
-player_1.usu = false;
-player_1.bee = false;
-player_1.kelp = false;*/
+function player_2(character_number, persimmon_count)
+{
+  this.crab = false;
+  this.monkey = false;
+  this.persimmon_count = persimmon_count;
+  if(character_number == 1)
+  {
+   this.monkey = true;
+  }
+  else 
+  {
+    this.crab = true;
+  }
+  this.change_persimmon_count = change_persimmon_count;
+  function change_persimmon_count(persimmons)
+  {
+    this.persimmon_count = persimmons;
+  }
+}
+myMother = new player_1(1,10);
+myMother.change_persimmon_count(15);
+var a = myMother.persimmon_count.toString();
+document.write(a);
 </script>
 
 </body>

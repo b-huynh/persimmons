@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+var invisibility = 1;
+var magic = 2;
+var player_1 = new Object();
+var player_2 = new Object();
+var player_3 = new Object();
+var player_4 = new Object();
+player_1.persimmon_count = 10;
+player_1.weakness = ; //user input
+player_1.strength = ;//user input
+</script>
+
+</body>
+</html>

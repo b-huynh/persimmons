@@ -39,7 +39,14 @@ function updateSidebar() {
     }
 
     sidebarContent += "<br><br>";
-    
+
+    for (var i = 0; i < player.items.length; ++i) {
+        sidebarContent = sidebarContent + player.items[i].amount + " " 
+                                        + player.items[i].item + "<br>";
+    }
+
+     sidebarContent += "<br><br>";
+
     for (var i = 0; i < player.villagers.length; ++i) {
         sidebarContent = sidebarContent + player.villagers[i].amount + " "
                                         + player.villagers[i].job + "<br>";
@@ -55,6 +62,9 @@ function updatePersimmon() {
     window.setTimeout("updatePersimmon()", persimmonRate);
 }
 
+function updateItems() {
+}
+
 function updateVillagers() {
     var loseChance = 10;
     var gainChance = 50;
@@ -64,7 +74,6 @@ function updateVillagers() {
         player.addVillager("unemployed", 1);
     else if (newVillagerChance <= loseChance)
         player.removeVillager("unemployed", 1);
-    else;
 
     updateSidebar();
     
@@ -72,10 +81,12 @@ function updateVillagers() {
     window.setTimeout("updateVillagers()", villagerRate);
 }
 
+    // Add/Subtract Villagers
 function addFarmer(amount) {
     if (!player.removeVillager("unemployed", amount))
         return;
     player.addVillager("farmer", amount);
+    player.numPersimmons -= 2;
     updateSidebar();
 }
 
@@ -83,6 +94,7 @@ function addSoldier(amount) {
     if (!player.removeVillager("unemployed", amount))
         return;
     player.addVillager("soldier", amount);
+    player.numPersimmons -= 20;
     updateSidebar();
 }
 
@@ -90,7 +102,17 @@ function addBlacksmith(amount) {
     if (!player.removeVillager("unemployed", amount))
         return;
     player.addVillager("blacksmith", amount);
+    player.numPersimmons -= 50;
     updateSidebar();
+}
+
+function addLumberjack(amount) {
+    if (!player.removeVillager("unemployed", amount))
+        return;
+    player.addVillager("lumberjack", amount);
+    player.numPersimmons -= 5;
+    updateSidebar();
+    
 }
 
 function subFarmer(amount) {
@@ -111,6 +133,21 @@ function subBlacksmith(amount) {
     if (!player.removeVillager("blacksmith", amount))
         return;
     player.addVillager("unemployed", amount);
+    updateSidebar();
+}
+
+function subLumberjack(amount) {
+    if (!player.removeVillager("lumberjack", amount))
+        return;
+    player.addVillager("unemployed", amount);
+    updateSidebar();
+}
+
+    // Add/Subtract items
+function addHouse(amount) {
+    if (!player.removeItem("wood", amount))
+        return;
+    player.addItem("house", amount);
     updateSidebar();
 }
 

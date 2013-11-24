@@ -5,9 +5,17 @@ function player()
     this.unemployed = 0;
     this.farmer = 0;
     this.soldier = 0;
+    this.blacksmith = 0;
+    this.lumberjack = 0;
+
+    this.house = 0;
+    this.wood = 0;
+    this.finger_traps = 0;
 
     this.items = [
         { item: "house", amount: 0 },
+        { item: "wood" , amount: 0 },
+        { item: "finger_traps", amount: 0 }
     ];
     
     this.villagers = [
@@ -15,8 +23,33 @@ function player()
         { job: "farmer", amount: 0 },
         { job: "soldier", amount: 0 },
         { job: "blacksmith", amount: 0},
+        { job: "lumberjack", amount: 0}
     ];
 
+    // Add/Remove Item
+    this.addItem = function (type, amount) {
+        for (var i = 0; i < this.items.length; ++i) {
+            if (this.items[i].item == type) {
+                this.items[i].amount += amount;
+                return;
+            }
+        }
+    };
+
+    this.removeItem = function (type, amount) {
+        for (var i = 0; i < this.items.length; ++i) {
+            if (this.items[i].item == type) {
+                if (this.items[i].item == type) {
+                    this.items[i].amount -= amount;
+                    return true;
+                } else
+                    return false;
+            }
+        }
+        return false;
+    };                
+
+    // Add/Remove Villager
     this.addVillager = function (type, amount) {
         for (var i = 0; i < this.villagers.length; ++i) {
             if (this.villagers[i].job == type) {

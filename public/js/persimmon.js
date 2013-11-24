@@ -14,6 +14,16 @@ for (var i = 0; i < player.villagers.length; ++i) {
                 localStorage.getItem(player.villagers[i].job) || 0);
 }
 
+function persimmonTab() {
+    var content = $( '#mainContent' );
+    content.html("");
+}
+
+function villageTab () {
+    var content = $( '#mainContent' );
+    content.load("village.html");
+}
+
 function toConsole(text) {
     var currentText = $( '#consoleOut' ).html();
     

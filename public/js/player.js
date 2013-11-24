@@ -2,16 +2,6 @@ function player()
 {
     this.numPersimmons = 0;
 
-    this.unemployed = 0;
-    this.farmer = 0;
-    this.soldier = 0;
-    this.blacksmith = 0;
-    this.lumberjack = 0;
-
-    this.house = 0;
-    this.wood = 0;
-    this.finger_traps = 0;
-
     this.items = [
         { item: "house", amount: 0 },
         { item: "wood" , amount: 0 },

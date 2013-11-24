@@ -17,7 +17,40 @@ function player()
         { job: "blacksmith", amount: 0},
     ];
 
-    this.add
+    this.addVillager = function (type, amount) {
+        for (var i = 0; i < this.villagers.length; ++i) {
+            if (this.villagers[i].job == type) {
+                this.villagers[i].amount += amount;
+                return;
+            }
+        }
+    };
+
+    this.removeVillager = function (type, amount) {
+        for (var i = 0; i < this.villagers.length; ++i) {
+            if (this.villagers[i].job == type) {
+                if (this.villagers[i].amount >= amount) {
+                    this.villagers[i].amount -= amount;
+                    return true;
+                } else
+                    return false;
+            }
+        }
+        return false;
+    };
+
+    this.getVillagerCount = function (type) {
+        for (var i = 0; i < this.villagers.length; ++i) {
+            if(this.villagers[i].job == type)
+                return this.villagers[i].amount;
+        }
+    };
+
+    this.saveVillagers = function() {
+        for (var i = 0; i < this.villagers.length; ++i) {
+            localStorage.setItem(this.villagers[i].job,this.villagers[i].amount);
+        }
+    }
 }
 
 function playerMonkey(character_number, persimmon_count)

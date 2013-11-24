@@ -19,6 +19,18 @@ function house () {
     ]; 
 }
 
+function farm () {
+    this.width = 6;
+    this.height = 3;
+
+    this.lines = 
+    [
+        new line("x====x", this.width),
+        new line("|*.*.|", this.width),
+        new line("x====x", this.width),
+    ];
+}
+
 function tree () {
     this.width = 13;
     this.height = 8;
@@ -42,7 +54,7 @@ function tree () {
 }
 
 function town () {
-    this.maxWidth = 125;
+    this.maxWidth = 115;
     this.maxHeight = 30;
     
     this.lines = new Array (this.maxHeight);
@@ -55,9 +67,7 @@ function town () {
 
     this.addAsciiObject = function (object) {
         for (var i = 0; i < this.maxHeight - object.height; ++i) {
-            console.log ("At line %d", i);
             var spacesLeft = this.maxWidth - this.lineWidths[i];
-            console.log("Spaces left %d", spacesLeft);
             if (spacesLeft < object.width)
                 continue;
 
@@ -68,9 +78,6 @@ function town () {
                     break;
                 }
             }
-
-            if (canFit) console.log ("Can fit");
-            else console.log( "Cannot Fit" );
 
             if (canFit) {
                 for (var j = 0; j < object.height; ++j) {

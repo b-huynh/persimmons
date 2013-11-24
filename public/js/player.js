@@ -8,29 +8,38 @@ function player()
     this.blacksmith = 0;
     this.lumberjack = 0;
     this.scientist = 0;
+    this.general = 0;
+    this.politician = 0;
 
     this.wood = 0;
+    this.coal = 0;
     this.house = 2;
     this.farm = 0;
+    this.factory = 0;
 
     this.items = [
         { item: "wood", amount: 0 },
         { item: "house", amount: 2 },
         { item: "farm", amount: 0 },
+        { item: "factory", amount: 0 },
+        { item: "coal", amount: 0}
     ];
     
     this.villagers = [
         { job: "unemployed", amount: 0 },
         { job: "farmer", amount: 0 },
         { job: "soldier", amount: 0 },
+        { job: "miner", amount: 0 },
         { job: "blacksmith", amount: 0},
         { job: "lumberjack", amount: 0},
-        { job: "scientist", amount: 0}
+        { job: "scientist", amount: 0},
+        { job: "general", amount: 0},
+        { job: "politician", amount: 0}
     ];
 
     this.research = [
         { title: "farm", state: false, descript: "A farm" },
-        { title: "l_house", state: false, descript: "Large house" },
+        { title: "large house", state: false, descript: "Large house" },
     ];
 
     // Add/Remove Item

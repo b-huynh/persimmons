@@ -1,6 +1,7 @@
 var persimmonRate = 10000;
 var villagerRate = 10000;
-var itemRate = 10000;
+var itemRate = 1000;
+var consumptionRate = 10000;
 
 var lineLimit = 5;
 
@@ -27,6 +28,10 @@ player.numPersimmons = JSON.parse(localStorage.getItem("numPersimmons")) || 0;
 for (var i = 0; i < player.villagers.length; ++i) {
     player.villagers[i].amount = JSON.parse( 
                 localStorage.getItem(player.villagers[i].job) || 0);
+}
+for (var i = 0; i <player.items.length; ++i) {
+    player.items[i].amount = JSON.parse(
+                localStorage.getItem(player.items[i].item) || 0);
 }
 
 function persimmonTab() {
@@ -56,6 +61,9 @@ function villageTab () {
 
 function toConsole(text) {
     var currentText = $( '#consoleOut' ).html();
+   
+    currentText = currentText.split("<strong>").join("");
+    currentText = currentText.split("</strong>").join("");
     
     var lines = currentText.split("<br>");
     while (lines.length >= lineLimit) {    
@@ -64,14 +72,14 @@ function toConsole(text) {
     
     currentText = lines.join("<br>");
 
-    $( '#consoleOut' ).html( text + "<br>" + currentText );
+    $( '#consoleOut' ).html( "<strong>" + text + "</strong>" + "<br>" + currentText );
 }
 
 function updateSidebar() {
     var items = [
         { item: "Persimmons", value: player.numPersimmons }
     ];
-    
+
     var sidebarContent = "";
     for (var i = 0; i < items.length; ++i) {
         sidebarContent = sidebarContent + items[i].value + " " 
@@ -85,27 +93,46 @@ function updateSidebar() {
                                         + player.items[i].item + "<br>";
     }
 
-     sidebarContent += "<br><br>";
+    sidebarContent += "<br><br>";
 
     for (var i = 0; i < player.villagers.length; ++i) {
         sidebarContent = sidebarContent + player.villagers[i].amount + " "
                                         + player.villagers[i].job + "<br>";
     }
 
+    // Research
+/*    sidebarContent += "<br>Research<br>";
+
+    for (var i = 0; i < player.research.length; ++i) {
+        sidebarContent = sidebarContent + player.research[i].title + " ";
+        if (player.research[i].state == true )
+            sidebarContent = sidebarContent + ": Complete";
+        else
+            sidebarContent = sidebarContent + ": Incomplete"
+        sidebarContent = sidebarContent + "<br>";                                        
+    }
+*/
     $( '#sidebar' ).html(sidebarContent);
 }
 
 function updatePersimmon() {
     player.numPersimmons += 1;
     player.numPersimmons += player.getVillagerCount("farmer");
+    if (player.getVillagerCount("farmer") > 0) toConsole("You found some persimmons.");
+    else toConsole("You find a persimmon.");
+    
     updateSidebar();
     window.setTimeout("updatePersimmon()", persimmonRate);
 }
 
 function updateItems() {
     if ( (player.getVillagerCount("lumberjack")) >= 1 )
-        player.addItem("wood", 1);
+        player.addItem("wood", player.getVillagerCount("lumberjack"));
+    if ( (player.getVillagerCount("miner")) >= 1 )
+        player.addItem("coal", player.getVillagerCount("miner"));
+
     updateSidebar();
+
     window.setTimeout("updateItems()", itemRate);
 }
 
@@ -125,7 +152,38 @@ function updateVillagers() {
     window.setTimeout("updateVillagers()", villagerRate);
 }
 
-    // Add/Subtract Villagers
+function updateConsumption() {
+    if (player.numPersimmons <= 0 ) 
+        return;
+    // Lumberjack
+    if (player.getVillagerCount("lumberjack") >= 1 )
+        player.numPersimmons -= (3*player.getVillagerCount("lumberjack"));
+    // Blacksmith
+    if (player.getVillagerCount("blacksmith") >= 1 )
+        player.numPersimmons -= (10*player.getVillagerCount("blacksmith"));
+    // Soldier
+    if (player.getVillagerCount("soldier") >= 1 )
+        player.numPersimmons -= (5*player.getVillagerCount("soldier"));
+    // Miner
+    if (player.getVillagerCount("miner") >= 1 )
+        player.numPersimmons -= (7*player.getVillagerCount("miner"));
+
+    // Scientist
+    if (player.getVillagerCount("scientist") >= 1 )
+        player.numPersimmons -= (50*player.getVillagerCount("scientist"));
+    // General
+    if (player.getVillagerCount("general") >= 1 )
+        player.numPersimmons -= (100*player.getVillagerCount("general"));
+    // Politician
+    if (player.getVillagerCount("politician") >= 1 )
+        player.numPersimmons -= (100*player.getVillagerCount("politician"));
+
+    updateSidebar(); 
+
+    window.setTimeout("updateConsumption()", consumptionRate);
+}
+
+    // Adding Villagers
 function addFarmer(amount) {
     if (!player.removeVillager("unemployed", amount)) {
         toConsole( "You need at least 1 unemployed villager." );
@@ -169,6 +227,21 @@ function addBlacksmith(amount) {
     updateSidebar();
 }
 
+function addMiner(amount) {
+    if (!player.removeVillager("unemployed", amount)) {
+        toConsole( "You need at least 1 unemployed villager." );
+        return;
+    }
+    if (player.numPersimmons < 30 ) {
+        toConsole( "You need at least 30 persimmons for a miner." );
+        return;
+    }
+
+    player.addVillager("miner", amount);
+    player.numPersimmons -= 30;
+    updateSidebar();
+}
+
 function addLumberjack(amount) {
     if (!player.removeVillager("unemployed", amount)) {
         toConsole( "You need at least 1 unemployed villager." );  
@@ -197,7 +270,35 @@ function addScientist(amount) {
     updateSidebar();
 }
 
+function addGeneral(amount) {
+    if (!player.removeVillager("unemployed", amount)) {
+        toConsole( "You need at least 1 unemployed villager." );  
+        return;
+    }
+    if (player.numPersimmons < 500 ){
+        toConsole( "You need at least 500 persimmons for a general." );
+        return;
+    }
+    player.addVillager("general", amount);
+    player.numPersimmons -= 500;
+    updateSidebar();
+}
 
+function addPolitician(amount) {
+    if (!player.removeVillager("unemployed", amount)) {
+        toConsole( "You need at least 1 unemployed villager." );  
+        return;
+    }
+    if (player.numPersimmons < 500 ){
+        toConsole( "You need at least 500 persimmons for a scientist." );
+        return;
+    }
+    player.addVillager("politician", amount);
+    player.numPersimmons -= 500;
+    updateSidebar();
+}
+
+    // Subtracting Villagers
 function subFarmer(amount) {
     if (!player.removeVillager("farmer", amount))
         return;
@@ -226,9 +327,30 @@ function subLumberjack(amount) {
     updateSidebar();
 }
 
-    // Add/Subtract items
+function subScientist(amount) {
+    if (!player.removeVillager("scientist", amount))
+        return;
+    player.addVillager("unemployed", amount);
+    updateSidebar();
+}
+
+function subGeneral(amount) {
+    if (!player.removeVillager("general", amount))
+        return;
+    player.addVillager("unemployed", amount);
+    updateSidebar();
+}
+
+function subPolitician(amount) {
+    if (!player.removeVillager("politician", amount))
+        return;
+    player.addVillager("unemployed", amount);
+    updateSidebar();
+}
+
+    // Add/Subtract House
 function addHouse(amount) {
-    if (!player.removeItem("wood", amount))
+    if (!player.removeItem("wood", 200))
         return;
     if (player.getItemCount("wood") < 200 ) {
         toConsole( "Need 200 wood" );
@@ -246,22 +368,45 @@ function subHouse(amount) {
     updateSidebar();
 }
 
+    // Add/Subtract Farm
 function addFarm(amount) {
-    if (!player.removeItem("wood", amount))
+    if (!player.removeItem("wood", 700))
         return;
     if (player.getItemCount("wood") < 700 ) {
         toConsole( "Need 700 wood" );
         return;
     }
-    player.addItem("farm", amount);
+    player.addItem("farm", 1);
+    
     updateSidebar();
 }
-
 
 function subFarm(amount) {
     if (!player.removeItem("farm", amount))
         return;
     player.removeItem("farm", amount);
+
+    updateSidebar();
+}
+    
+    // Add/Subtract Factory
+function addFactory(amount) {
+    if (!player.removeItem("wood", 1000))
+        return;
+    if (player.getItemCount("wood") < 1000 ) {
+        toConsole( "Need 1000 wood" );
+        return;
+    }
+    player.addItem("factory", amount);
+    
+    updateSidebar();
+}
+
+function subFactory(amount) {
+    if (!player.removeItem("factory", amount))
+        return;
+    player.removeItem("factory", amount);
+
     updateSidebar();
 }
 
@@ -311,5 +456,6 @@ function main() {
     updatePersimmon();
     updateItems();
     updateVillagers();
+    updateConsumption();
     save();
 }

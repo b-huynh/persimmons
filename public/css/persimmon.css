@@ -1,18 +1,18 @@
 #consoleOut {
     padding-top: 10px;
     padding-left: 10px;
-    height: 120px;
+    height: 200px;
     background-color: #eeeeee;
 }
 
 #mainView {
-    height: 400px;
-    background-color: #bbbbbb;
+    height: 410px;
+    background-color: #ffdea4;
 }
 
 #sidebar {
-    height: 400px;
-    background-color: #bbbbbb;
+    height: 410px;
+    background-color: #ffdea4;
     padding-left: 10px;
 }
 
@@ -22,11 +22,11 @@
 }
 
 #top {
-    margin-top: 50px;
+    margin-top: 10px;
     margin-left: 0px;
     margin-right: 0px;
     padding-top: 15px;
-    background-color: #bbbbbb;
+    background-color: #ffdea4;
 }
 
 #mainContent {

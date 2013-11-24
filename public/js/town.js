@@ -19,6 +19,22 @@ function house () {
     ]; 
 }
 
+function house2 () {
+    this.width = 6;
+    this.height = 3;
+
+    var line1 = new line("&nbsp___⁋&nbsp", this.width);
+    var line2 = new line("/____\\", this.width);
+    var line3 = new line("|_{}_|", this.width);
+
+    this.lines = 
+    [   
+        line1,
+        line2,
+        line3,
+    ]; 
+}
+
 function farm () {
     this.width = 6;
     this.height = 3;
@@ -32,9 +48,13 @@ function farm () {
 }
 
 function tree () {
-    this.width = 13;
-    this.height = 8;
-
+    this.width = 5;
+    this.height = 3;
+/*
+    this.width = 6;
+    this.height = 6;
+*/
+/*
     this.lines = 
     [
         new line("&nbsp&nbsp&nbsp&nbsp&nbsp%~%&nbsp&nbsp&nbsp&nbsp&nbsp", this.width),
@@ -51,6 +71,25 @@ function tree () {
         new line("&nbsp&nbsp&nbsp&nbsp&nbsp%~%&nbsp&nbsp&nbsp&nbsp&nbsp", this.width),
         new line("&nbsp&nbsp&nbsp&nbsp&nbsp%~%&nbsp&nbsp&nbsp&nbsp&nbsp", this.width),
     ];
+    */
+
+    this.lines =
+    [
+        new line("&nbsp.#.&nbsp", this.width),
+        new line("'#%#'", this.width),
+        new line("&nbsp&nbsp|&nbsp&nbsp", this.width),
+    ];
+/*
+    this.lines = 
+    [
+        new line("&nbsp&nbsp_.&nbsp&nbsp", this.width),
+        new line("&nbsp&nbsp%%&nbsp&nbsp", this.width),
+        new line(".%%%%_", this.width),
+        new line("%\\%%/%", this.width),
+        new line("&nbsp&nbsp}{&nbsp&nbsp", this.width),
+        new line(",,}{,,", this.width),
+    ];
+*/
 }
 
 function town () {

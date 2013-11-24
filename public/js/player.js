@@ -17,8 +17,10 @@ function player()
     this.farm = 0;
     this.factory = 0;
 
+/*
     this.items = [
         { item: "wood", amount: 0 },
+        { item: "tree", amount: 0 },
         { item: "house", amount: 2 },
         { item: "farm", amount: 0 },
         { item: "factory", amount: 0 },
@@ -35,6 +37,20 @@ function player()
         { job: "scientist", amount: 0},
         { job: "general", amount: 0},
         { job: "politician", amount: 0}
+    ];
+    */
+    this.items = [
+        { item: "wood", amount: 0 },
+        { item: "tree", amount: 0 },
+        { item: "house", amount: 2 },
+        { item: "farm", amount: 0 },
+    ];
+    
+    this.villagers = [
+        { job: "unemployed", amount: 0 },
+        { job: "farmer", amount: 0 },
+        { job: "lumberjack", amount: 0},
+        { job: "soldier", amount: 0 },
     ];
 
     this.research = [
@@ -111,18 +127,5 @@ function player()
         for (var i = 0; i < this.villagers.length; ++i) {
             localStorage.setItem(this.villagers[i].job,this.villagers[i].amount);
         }
-    }
-}
-
-function playerMonkey(character_number, persimmon_count)
-{
-    this.crab = false;
-    this.monkey = true;
-    this.persimmon_count = persimmon_count;
-    this.change_persimmon_count = change_persimmon_count;
-   
-    function change_persimmon_count(persimmons)
-    {
-        this.persimmon_count = persimmons;
     }
 }

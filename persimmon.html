@@ -19,6 +19,7 @@
         <script src="js/player.js"></script>
         <script src="js/town.js"></script>
         <script src="js/persimmon.js"></script>
+        <script src="js/warfare.js"></script>
 
         <!-- Persimmon CSS -->
         <link rel="stylesheet" href="css/persimmon.css">
@@ -26,14 +27,17 @@
     </head>
     <body>
         <div class="container">
+            <h3> Persimmons </h3>
             <div class="row" id="top">
                 <div class="col-md-10">
                     <div id="mainView">
                         <div id="mainTabs">
-                        <button type="button" class="btn btn-link tab" onclick="persimmonTab()"> Town </button>
-                        <button type="button" class="btn btn-link tab" onclick="villageTab()"> Manage </button>
-                        <button type="button" class="btn btn-link tab" onclick="persimmonTab()"> Tab 3 </button>
-                        <button type="button" class="btn btn-link tab" onclick="persimmonTab()"> Tab 4 </button>
+                        <button type="button" class="btn btn-link tab" onclick="toggleTownMap = true; persimmonTab()"> Town </button>
+                        <button type="button" class="btn btn-link tab" onclick="villageTab()"> Resources </button>
+                        <button type="button" class="btn btn-link tab" onclick="warTab(); updateArmyMessage();"> Field </button>
+                        <button type="button" class="btn btn-link tab" onclick="settingsTab()"> Settings </button>
+                        </div>
+                        <div id="helpText" class="col-md-12">
                         </div>
                         <div id="mainContent">
                         <p></p>
@@ -56,9 +60,6 @@
                     </div>
                 </div>
             </div>
-
-            <button type="button" class="btn" onclick="reset()"> RESET </button>
-            <button type="button" class="btn" onclick="eatPersimmon()"> EAT </button>
         </div>
 
     </body>

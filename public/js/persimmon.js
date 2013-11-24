@@ -6,6 +6,20 @@ var lineLimit = 5;
 
 // New Player
 var player = new player();
+var townMap = new town();
+
+var asciiHouse = new house();
+var asciiTree = new tree();
+
+/*
+for (var i = 0; i < 100; ++i) {
+    var ran = Math.random();
+    if (ran > 0.2)
+        townMap.addAsciiObject( testHouse );
+    else
+        townMap.addAsciiObject( testTree );
+}
+*/
 
 //Load existing player from local storage
 player.numPersimmons = JSON.parse(localStorage.getItem("numPersimmons")) || 0;
@@ -13,6 +27,31 @@ player.numPersimmons = JSON.parse(localStorage.getItem("numPersimmons")) || 0;
 for (var i = 0; i < player.villagers.length; ++i) {
     player.villagers[i].amount = JSON.parse( 
                 localStorage.getItem(player.villagers[i].job) || 0);
+}
+
+function persimmonTab() {
+    var content = $( '#mainContent' );
+    var home = new house(); 
+   
+    var text = home.lines.join("<br>");
+    text += "<br>";
+    text += text + text + text + text + text;
+    
+    text = "";
+    for (var j = 0; j < 30; ++j) {
+    for (var i = 0; i < 125; ++i)
+        text += "*"; 
+    text += "<br>";
+    }
+
+    text = townMap.map();
+
+    content.html("<p id='townMap'>" + text + "</p>");
+}
+
+function villageTab () {
+    var content = $( '#mainContent' );
+    content.load("village.html");
 }
 
 function toConsole(text) {

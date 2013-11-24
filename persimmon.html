@@ -20,6 +20,7 @@
 
         <!-- Persimmon JS -->
         <script src="js/player.js"></script>
+        <script src="js/town.js"></script>
         <script src="js/persimmon.js"></script>
 
         <!-- Persimmon CSS -->
@@ -31,48 +32,15 @@
             <div class="row-fluid">
                 <div class="span10">
                     <div id="mainView">
-                        <button type="button" class="btn" 
-                            onclick="addFarmer(1)"> +1 Farmer
-                        </button>
-                        <button type="button" class="btn" 
-                            onclick="addSoldier(1)"> +1 Soldier
-                        </button>
-                        <button type="button" class="btn" 
-                            onclick="addBlacksmith(1)"> +1 Blacksmith
-                        </button>
-                        <button type="button" class="btn" 
-                            onclick="addLumberjack(1)"> +1 Lumberjack
-                        </button>
-                        <button type="button" class="btn"
-                            onclick="addHouse(1)"> +1 House
-                        </button>
-                        <button type="button" class="btn"
-                            onclick="addFarm(1)"> +1 Farm
-                        </button>
-
-
-
-                        <br>
-                        <button type="button" class="btn"
-                            onclick="subFarmer(1)"> - 1 Farmer
-                        </button>
-                        <button type="button" class="btn" 
-                            onclick="subSoldier(1)"> -1 Soldier
-                        </button>
-                        <button type="button" class="btn" 
-                            onclick="subBlacksmith(1)"> -1 Blacksmith
-                        </button>
-                        <button type="button" class="btn" 
-                            onclick="subLumberjack(1)"> -1 Lumberjack
-                        </button>
-                        <button type="button" class="btn" 
-                            onclick="subHouse(1)"> -1 House
-                        </button>
-                        <button type="button" class="btn"
-                            onclick="subFarm(1)"> -1 Farm
-                        </button>
-
-
+                        <div id="mainTabs">
+                        <button type="button" class="btn btn-link" onclick="persimmonTab()"> Town </button>
+                        <button type="button" class="btn btn-link" onclick="villageTab()"> People </button>
+                        <button type="button" class="btn btn-link" onclick="persimmonTab()"> Tab 3 </button>
+                        <button type="button" class="btn btn-link" onclick="persimmonTab()"> Tab 4 </button>
+                        </div>
+                        <div id="mainContent">
+                        <p></p>
+                        </div>
                     </div>
                 </div>
                 <div class="span2">

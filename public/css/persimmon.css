@@ -1,3 +1,21 @@
 #consoleOut {
+    height: 100px;
     background-color: #eeeeee;
+}
+
+#mainView {
+    margin-top: 50px;
+    height: 400px;
+    background-color: #aaaaaa;
+}
+
+#sidebar {
+    margin-top: 50px;
+    height: 400px;
+    background-color: #aaaaaa;
+}
+
+#townMap {
+    line-height: 90%;
+    font-family: "Lucida Console", Monaco, monospace;
 }

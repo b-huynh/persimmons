@@ -19,6 +19,8 @@
         <script src="public/js/bootstrap.js"></script>
 
         <!-- Persimmon JS -->
+        <script src="js/player.js"></script>
+        <script src="js/town.js"></script>
         <script src="js/persimmon.js"></script>
 
         <!-- Persimmon CSS -->
@@ -26,6 +28,28 @@
 
     </head>
     <body>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span10">
+                    <div id="mainView">
+                        <div id="mainTabs">
+                        <button type="button" class="btn btn-link" onclick="persimmonTab()"> Town </button>
+                        <button type="button" class="btn btn-link" onclick="villageTab()"> People </button>
+                        <button type="button" class="btn btn-link" onclick="persimmonTab()"> Tab 3 </button>
+                        <button type="button" class="btn btn-link" onclick="persimmonTab()"> Tab 4 </button>
+                        </div>
+                        <div id="mainContent">
+                        <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="span2">
+                    <div id="sidebar">
+                    <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Add your site or application content here -->
         <div class="container-fluid">
             <div class="span12">
@@ -36,6 +60,7 @@
                 </div>
             </div>
             <button type="button" class="btn" onclick="reset()"> RESET </button>
+            <button type="button" class="btn" onclick="eatPersimmon()"> EAT </button>
         </div>
 
     </body>

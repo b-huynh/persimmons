@@ -31,8 +31,13 @@ function disable(){
 	else 
 		$('#testButton1').prop("disabled", true);
 }
+function hide(){
+	$('#testButton2').toggle();
+}
+function hide1s(){
+	$("#1sHider").toggle();
+		setTimeout(function(){
+			$("#1sHider").toggle();
+		}, 1000);
+}
 
-$(":show").click( function() {
-localStorage.getItem('clicks');
-    return false;
-});

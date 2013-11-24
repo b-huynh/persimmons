@@ -13,7 +13,7 @@
 </head>
 
 <body>
-	<script src="js/pineapple.js"></script>
+	<script src="public/js/pineapple.js"></script>
 	<h3>0: Basic popups with query and confirm dialogs, variable usage and display</h3>
 	<button onclick="myFunction()" id="tryMe">TRY ME</button><br>
 	Name: <input type="text" name="Name"><br>
@@ -21,12 +21,14 @@
 	<h3>1: Counter with reset, local storage</h3>
 	<button onclick="clicker()" id="click"> Counter </button>
 	<button onclick="reset()" id="reset"> RESET! </button>
-	<div id="clickSpot"></div>
-	<br>
+	<div id="clickSpot"></div><br>
 	<h3>2: Disable functionality</h3>
 	<button onclick="disable()" id="disableButton">DISABLE!</button>
 	<button id="testButton1">testButton1</button>
-	
-
+	<h3>3: Hide button</h3>
+	<button onclick="hide()" id="hideButton">HIDE!</button>
+	<button id="testButton2">testButton2</button>
+	<h3>4: Disable for 1 second</h3>
+	<button onclick="hide1s()" id="1sHider">Hide for 1 sec</button>
 </body>
 </html>

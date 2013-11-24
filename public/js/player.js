@@ -1,14 +1,23 @@
-function playerCrab(character_number, persimmon_count)
+function player()
 {
-    this.crab = true;
-    this.monkey = false;
-    this.persimmon_count = persimmon_count;
-    this.change_persimmon_count = change_persimmon_count();
+    this.numPersimmons = 0;
+
+    this.unemployed = 0;
+    this.farmer = 0;
+    this.soldier = 0;
+
+    this.items = [
+        { item: "house", amount: 0 },
+    ];
     
-    function change_persimmon_count(persimmons)
-    {
-        this.persimmon_count = persimmons;
-    }
+    this.villagers = [
+        { job: "unemployed", amount: 0 },
+        { job: "farmer", amount: 0 },
+        { job: "soldier", amount: 0 },
+        { job: "blacksmith", amount: 0},
+    ];
+
+    this.add
 }
 
 function playerMonkey(character_number, persimmon_count)

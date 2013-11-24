@@ -79,6 +79,41 @@ function addFarmer(amount) {
     updateSidebar();
 }
 
+function addSoldier(amount) {
+    if (!player.removeVillager("unemployed", amount))
+        return;
+    player.addVillager("soldier", amount);
+    updateSidebar();
+}
+
+function addBlacksmith(amount) {
+    if (!player.removeVillager("unemployed", amount))
+        return;
+    player.addVillager("blacksmith", amount);
+    updateSidebar();
+}
+
+function subFarmer(amount) {
+    if (!player.removeVillager("farmer", amount))
+        return;
+    player.addVillager("unemployed", amount);
+    updateSidebar();
+}
+
+function subSoldier(amount) {
+    if (!player.removeVillager("soldier", amount))
+        return;
+    player.addVillager("unemployed", amount);
+    updateSidebar();
+}
+
+function subBlacksmith(amount) {
+    if (!player.removeVillager("blacksmith", amount))
+        return;
+    player.addVillager("unemployed", amount);
+    updateSidebar();
+}
+
 function reset() {
     player.numPersimmons = 0;
     

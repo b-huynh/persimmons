@@ -1,6 +1,6 @@
 function spontaneous()
 {
-	var affected_people = 11;
+	var affected_people = player.getTotalVillagers;
 	alert("A spontaneous combustion disease ravages your town. You loose people.");
 	if(numunemployed >= affected_people){
 	numunemployed = numumemployed - affected_people;}

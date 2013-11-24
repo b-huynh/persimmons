@@ -276,6 +276,39 @@ function researchCounter(totalTime) {
     }
 }
 
+function eventNaturalDisaster(){
+	var temp = Math.random();
+	var event;
+	switch(temp*100%3){
+		case 0: event = "tornado";
+		case 1: event = "earthquake";
+		case 2: event = "flood";
+	}
+	toConsole("Unfortunately, a " + event + " has struck, destroying housing."); 
+	player.subHouse(temp*player.getItemCount("house")/2);
+}
+
+function eventNothing(){
+	toConsole("The weather is fair.");
+}
+
+function randomEventHander(){
+	var naturalDisasterChance = .1;
+	var fortuneChance = .2;
+	var merchantChance = .7;
+	var dice = Math.random() * 100;
+	if( temp > 90) // 10% chance of natual disaster event
+		eventNaturalDisaster();
+	else if( temp >= 70 && temp < 90)
+		eventFortune();	// 40% chance of good fortune
+	else if( temp >= 0 && temp < 70)
+		eventNothing();
+}
+function eventFortune(){
+	toConsole("Fortune has smiled upon you, adding persimmons.");
+	player.numPersimmons = player.numPersimmons*2;
+}
+
 function reset() {
     player.numPersimmons = 0;
     

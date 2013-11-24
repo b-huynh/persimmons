@@ -106,6 +106,14 @@ function player()
             localStorage.setItem(this.villagers[i].job,this.villagers[i].amount);
         }
     }
+	
+	this.getTotalVillagers = function () {
+		var temp = 0;
+		for( var i = 0; i < this.villagers.length; i++){
+			temp += this.villagers[i].amount;
+		}
+		return temp;
+	}
 }
 
 function playerMonkey(character_number, persimmon_count)

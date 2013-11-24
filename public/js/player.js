@@ -8,6 +8,8 @@ function player()
     this.blacksmith = 0;
     this.lumberjack = 0;
     this.scientist = 0;
+	this.general = 0;
+	this.politician = 0;
 
     this.wood = 0;
     this.house = 2;
@@ -25,7 +27,8 @@ function player()
         { job: "soldier", amount: 0 },
         { job: "blacksmith", amount: 0},
         { job: "lumberjack", amount: 0},
-        { job: "scientist", amount: 0}
+        { job: "general", amount: 0},
+		{ job: "politician", amount: 0}
     ];
 
     this.research = [

@@ -1,15 +1,34 @@
 #consoleOut {
-    height: 100px;
+    padding-top: 10px;
+    padding-left: 10px;
+    height: 120px;
     background-color: #eeeeee;
 }
 
 #mainView {
-    margin-top: 50px;
     height: 400px;
-    background-color: #aaaaaa;
+    background-color: #bbbbbb;
 }
 
 #sidebar {
-    margin-top: 50px;
     height: 400px;
-    background-color: #aaaaaa;
+    background-color: #bbbbbb;
+    padding-left: 10px;
+}
+
+#townMap {
+    line-height: 90%;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+#top {
+    margin-top: 50px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 15px;
+    background-color: #bbbbbb;
+}
+
+#mainContent {
+    margin-top: 15px;
+}

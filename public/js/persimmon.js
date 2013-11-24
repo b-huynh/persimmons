@@ -15,9 +15,9 @@ var asciiTree = new tree();
 for (var i = 0; i < 100; ++i) {
     var ran = Math.random();
     if (ran > 0.2)
-        townMap.addAsciiObject( testHouse );
+        townMap.addAsciiObject( asciiHouse );
     else
-        townMap.addAsciiObject( testTree );
+        townMap.addAsciiObject( asciiTree );
 }
 */
 
